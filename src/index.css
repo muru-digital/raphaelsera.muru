@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'PinyonScript';
+    src: url('/fonts/PinyonScript.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
