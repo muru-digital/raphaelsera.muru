@@ -13,6 +13,9 @@ const GOLD = "#b8952a";
 const NAVY = "#1e3a8a";
 const DEEP = "#0f2456";
 
+const WEDDING_DATE = new Date("2026-07-17T08:00:00");
+const akad_date = "Sabtu, 17 Juli 2025"
+
 // ─── STORAGE ──────────────────────────────────────────────────────────────────
 const STORAGE_KEY = "wedding-raphael-seraphina-v1";
 
@@ -36,6 +39,7 @@ async function saveData(data) {
 // ─── COUNTDOWN ────────────────────────────────────────────────────────────────
 function useCountdown(targetDate) {
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
   useEffect(() => {
     const calc = () => {
       const diff = new Date(targetDate) - new Date();
@@ -51,6 +55,7 @@ function useCountdown(targetDate) {
     const id = setInterval(calc, 1000);
     return () => clearInterval(id);
   }, [targetDate]);
+
   return time;
 }
 
@@ -303,7 +308,7 @@ function HeroSection() {
             <span className="text-gold text-lg sm:text-2xl font-primary">&</span>
             <h2 className="text-navy text-[32px] sm:text-6xl font-primary">Seraphina</h2>
           </div>
-          <p className="text-gold text-xs sm:text-sm tracking-widest mt-1 sm:mt-9 lg:mt-6">Sabtu, 30 April 2026</p>
+          <p className="text-gold text-xs sm:text-sm tracking-widest mt-1 sm:mt-9 lg:mt-6">{akad_date}</p>
         </FadeIn>
 
         <div className="mt-12 mb-24 sm:mt-14 lg:mt-8 lg:mb-16">
@@ -329,7 +334,7 @@ function HeroSection() {
 // Couple
 function CoupleSection() {
   return (
-    <section className="relative py-16 px-6 overflow-hidden  ">
+    <section className="relative py-16 px-6 overflow-hidden bg-white ">
 
       <div className="relative z-10 max-w-xl mx-auto text-center">
 
@@ -368,7 +373,7 @@ function CoupleSection() {
 
 // SAVE THE DATE
 function SaveTheDateSection() {
-  const { days, hours, minutes, seconds } = useCountdown("2026-04-30T08:00:00");
+  const { days, hours, minutes, seconds } = useCountdown(WEDDING_DATE);
 
   const handleCalendar = () => {
     window.open(
@@ -393,8 +398,7 @@ function SaveTheDateSection() {
               top: `${Math.random() * 100}%`,
             }}
             animate={{ opacity: [0.08, Math.random() * 0.5 + 0.15, 0.08] }}
-            transition={{ duration: Math.random() * 3 + 2, repeat: Infinity, delay: Math.random() * 4 }}
-          />
+            transition={{ duration: Math.random() * 3 + 2, repeat: Infinity, delay: Math.random() * 4 }} />
         ))}
       </div>
 
@@ -448,7 +452,7 @@ function SaveTheDateSection() {
 // EVENT / WEDDING DAY
 function EventSection() {
   return (
-    <section className="relative py-16 px-6 overflow-hidden ">
+    <section className="relative py-16 px-6 overflow-hidden bg-white">
 
       <div className="relative z-10 max-w-lg mx-auto text-center">
 
@@ -469,7 +473,7 @@ function EventSection() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p className="mb-12 text-2xl text-deep font-serif">Sabtu, 30 April 2026 </p>
+          <p className="mb-12 text-2xl text-deep font-serif">{akad_date}</p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
             {[
@@ -483,7 +487,7 @@ function EventSection() {
                   <GiRing className="mx-auto text-3xl" />
                 ) : (
                   <div>
-                    <img src="/blu.png" alt="" className="w-7" />
+                    <img src="blu.png" alt="" className="w-7" />
                   </div>
 
                 )}</div>
@@ -615,7 +619,7 @@ function Footer() {
         </div>
 
         <p className="font-primary mb-1 text-3xl text-gold ">Raphael & Seraphina</p>
-        <p className="text-xs mb-10 text-[#BED2FF]/65"> Sabtu, 16 May 2026</p>
+        <p className="text-xs mb-10 text-[#BED2FF]/65">{akad_date}</p>
 
         <div className="h-px w-10 mx-auto mb-4" style={{ background: "rgba(184,149,42,0.35)" }} />
 
